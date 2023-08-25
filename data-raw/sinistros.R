@@ -1,3 +1,4 @@
-## code to prepare `sinistros` dataset goes here
+library(DT)
+
 
 usethis::use_data(sinistros, overwrite = TRUE)
