@@ -1,16 +1,17 @@
-Package: prfdata
-Title: Sinistros de Trânsito em Rodovias Federais Brasileiras
+Package: prfaccidents
+Title: Road Accidents Data in Brazilian Federal Highways
 Version: 0.0.0.9001
 Authors@R: 
-    person(
+    c(person(
         given = c("Pedro", "Augusto", "Borges"), 
         family = "Santos",
-        email = "pedro.borges@onsv.org.br",
+        email = "pabsantos21@gmail.com",
         role = c("aut", "cre"),
-        comment = c(ORCID = "0000-0003-0550-4251")
-    )
-Description: Dados dos sinistros de trânsito em rodovias federais brasileiras,
-    incluindo a base das ocorrências e dos envolvidos.
+        comment = c(ORCID = "0000-0003-0550-4251")),
+    person("ONSV - National Road Safety Observatory", role = c("cph", "fnd")))
+Description: Package including road accidents data in Brazilian federal
+    highways since 2007. Data collected from the Federal Highway Police (PRF) 
+    database. 
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
