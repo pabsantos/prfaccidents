@@ -69,9 +69,15 @@ prf_accidents[tipo_pista == "(null)", tipo_pista := NA]
 
 prf_accidents[tracado_via %in% c("(null)", "Não Informado"), tracado_via := NA]
 
-prf_accidents[uso_solo == "Sim"]
+prf_accidents[uso_solo == "(null)", uso_solo := NA]
 
-prf_accidents$uso_solo %>% table()
+prf_accidents[, ano := year(data_inversa)]
+
+prf_accidents[regional == "N/A", regional := NA]
+
+prf_accidents[delegacia == "N/A", delegacia := NA]
+
+prf_accidents[uop == "N/A", uop := NA]
 
 usethis::use_data(prf_accidents, overwrite = TRUE)
 
