@@ -80,5 +80,3 @@ prf_accidents[delegacia == "N/A", delegacia := NA]
 prf_accidents[uop == "N/A", uop := NA]
 
 usethis::use_data(prf_accidents, overwrite = TRUE)
-
-
