@@ -71,6 +71,10 @@ prf_accidents[tracado_via %in% c("(null)", "Não Informado"), tracado_via := NA]
 
 prf_accidents[uso_solo == "(null)", uso_solo := NA]
 
+prf_accidents[uso_solo == "Sim", uso_solo := "Urbano"]
+
+prf_accidents[uso_solo == "Não", uso_solo := "Rural"]
+
 prf_accidents[, ano := year(data_inversa)]
 
 prf_accidents[regional == "N/A", regional := NA]
