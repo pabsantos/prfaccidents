@@ -101,6 +101,63 @@ prf_victims[tipo_veiculo == "micro-ônibus", tipo_veiculo := "microônibus"]
 
 prf_victims[tipo_veiculo == "motocicletas", tipo_veiculo := "motocicleta"]
 
-prf_victims$tipo_veiculo |> unique() |> sort()
+prf_victims[
+  tipo_veiculo %in% c("semi-reboque", "semireboque"),
+  tipo_veiculo := "semirreboque"
+]
+
+prf_victims[
+  tipo_veiculo == "trator de esteiras",
+  tipo_veiculo := "trator de esteira"
+]
+
+prf_victims[
+  tipo_veiculo %in% c("", "(null)", "não identificado", "não informado"),
+  tipo_veiculo := NA
+]
+
+prf_victims[tipo_veiculo == "bonde / trem", tipo_veiculo := "trem-bonde"]
+
+prf_victims[, marca := sub("\\s+$", "", marca)]
+
+prf_victims[, ano_fabricacao_veiculo := as.numeric(ano_fabricacao_veiculo)]
+
+prf_victims[ano_fabricacao_veiculo > 2023, ano_fabricacao_veiculo := NA]
+
+prf_victims[, estado_fisico := sub("\\s+$", "", estado_fisico)]
+
+prf_victims[
+  estado_fisico %in% c("", "(null)", "Ignorado", "Não Informado"),
+  estado_fisico := NA
+]
+
+prf_victims[estado_fisico == "Lesões Graves", estado_fisico := "Ferido Grave"]
+
+prf_victims[estado_fisico == "Lesões Leves", estado_fisico := "Ferido Leve"]
+
+prf_victims[estado_fisico == "Morto", estado_fisico := "Óbito"]
+
+prf_victims[
+  sexo %in% c("", "I", "Ignorado", "Inválido", "Não Informado"),
+  sexo := NA
+]
+
+prf_victims[sexo == "F", sexo := "Feminino"]
+
+prf_victims[sexo == "M", sexo := "Masculino"]
+
+prf_victims[, nacionalidade := tolower(nacionalidade)]
+
+prf_victims[, naturalidade := tolower(naturalidade)]
+
+prf_victims[, ilesos := NULL]
+prf_victims[, feridos_leves := NULL]
+prf_victims[, feridos_graves := NULL]
+prf_victims[, mortos := NULL]
+prf_victims[, latitude := NULL]
+prf_victims[, longitude := NULL]
+prf_victims[, regional := NULL]
+prf_victims[, delegacia := NULL]
+prf_victims[, uop := NULL]
 
 usethis::use_data(prf_victims, overwrite = TRUE)
